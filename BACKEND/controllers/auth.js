@@ -103,12 +103,11 @@ exports.forgotpassword = async (req, res) => {
 
     const message = `
         <center>
-        <img src='https://i.ibb.co/4RvV7nj/logo.png' />
-        <h1>Sri Lanka Institute of Information Technology</h1><br/><br/></br>
+        <h1> Agri Product Online Purchasing Platform</h1><br/><br/></br>
         <h3>You have requested a password reset</h3>
         <p>Please go to this URL to reset password</p>
         <a href=${resetURL} clicktracking=off>${resetURL}</a><br/><br/></br>
-        <span>Copyright © 2022 Sri Lanka Institute of Information Technology<span></center>
+        <span>Copyright © 2022  Agri Product Online Purchasing Platform<span></center>
          `;
     try {
       await sendEmail({
@@ -234,8 +233,7 @@ exports.notifyUser = async (req, res) => {
 
   const message = `
         <center>
-        <img src='https://i.ibb.co/4RvV7nj/logo.png' />
-        <h1>Sri Lanka Institute of Information Technology</h1><br/><br/></br>
+        <h1> Agri Product Online Purchasing Platform</h1><br/><br/></br>
         <h3>We created a login for you</h3>
         <h5>
         ${
@@ -247,14 +245,14 @@ exports.notifyUser = async (req, res) => {
         <p>Username : ${username}</p>
         <p>Password : ${password}</p>
         <br/><br/></br>
-        <span>Copyright © 2022 Sri Lanka Institute of Information Technology<span></center>
+        <span>Copyright © 2022  Agri Product Online Purchasing Platform<span></center>
          `;
   try {
     await sendEmail({
       //send email
       to: email,
       subject:
-        "Login Details For Sri Lanka Institute of Information Technology",
+        "Login Details For  Agri Product Online Purchasing Platform",
       text: message,
     });
 
