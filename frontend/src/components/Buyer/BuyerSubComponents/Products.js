@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Skeleton, Card, Spin, notification } from "antd";
+import { Skeleton, Card, Spin, notification, Input } from "antd";
 import { InboxOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import axios from "axios";
 import moment from "moment";
@@ -10,6 +10,7 @@ const { Meta } = Card;
 const Products = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -33,6 +34,10 @@ const Products = () => {
     }
   };
 
+  const filteredData = data.filter(
+    (el) => el?.itemName.toLowerCase().indexOf(query.toLowerCase()) >= 0
+  );
+
   return (
     <>
       {loading === false ? (
@@ -42,7 +47,12 @@ const Products = () => {
       ) : (
         <>
           <center>
-            {data.length === 0 ? (
+            <Input
+              type={"text"}
+              placeholder="Search Here..."
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {filteredData.length === 0 ? (
               <>
                 <center>
                   <span style={{ fontSize: "30px" }}>
@@ -53,7 +63,7 @@ const Products = () => {
                 </center>
               </>
             ) : (
-              data.map((value, index) => (
+              filteredData.map((value, index) => (
                 <div
                   key={value._id}
                   style={{ display: "inline-block", marginRight: "50px" }}
