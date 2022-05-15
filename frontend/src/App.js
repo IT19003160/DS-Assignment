@@ -31,6 +31,30 @@ const App = () => {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/farmer-dashboard/:username/create"
+            element={
+              <PrivateRoute>
+                <FarmerDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/farmer-dashboard/:username/view"
+            element={
+              <PrivateRoute>
+                <FarmerDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/farmer-dashboard/:username/edit/:id"
+            element={
+              <PrivateRoute>
+                <FarmerDashboard />
+              </PrivateRoute>
+            }
+          />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

@@ -8,6 +8,9 @@ import {
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
+import CreateItem from "./FarmerSubComponents/CreateItem";
+import ViewItems from "./FarmerSubComponents/ViewItems";
+import EditItem from "./FarmerSubComponents/EditItem";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -15,7 +18,10 @@ const SupervisorDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const history = useNavigate();
 
-  const { username } = useParams();
+  const { username, id } = useParams();
+
+  const location = useLocation();
+  const { pathname } = location;
 
   const date = new Date();
   const hrs = date.getHours();
@@ -58,12 +64,26 @@ const SupervisorDashboard = () => {
         <br />
         <br />
         <br />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["0"]}
+          selectedKeys={
+            pathname ===
+              `/farmer-dashboard/${localStorage.getItem("username")}/view` ||
+            pathname ===
+              `/farmer-dashboard/${localStorage.getItem("username")}/edit/${id}`
+              ? ["1"]
+              : ["0"]
+          }
+        >
           <Menu.Item
             key="0"
             icon={<PullRequestOutlined />}
             onClick={() => {
-              history(`/farmer-dashboard/${localStorage.getItem("username")}`);
+              history(
+                `/farmer-dashboard/${localStorage.getItem("username")}/create`
+              );
             }}
           >
             Add Item
@@ -72,7 +92,9 @@ const SupervisorDashboard = () => {
             key="1"
             icon={<AuditOutlined />}
             onClick={() => {
-              history(`/farmer-dashboard/${localStorage.getItem("username")}`);
+              history(
+                `/farmer-dashboard/${localStorage.getItem("username")}/view`
+              );
             }}
           >
             View Items
@@ -101,35 +123,30 @@ const SupervisorDashboard = () => {
           className="site-layout-background"
           style={{ padding: 0, textAlign: "center" }}
         >
-          <h1 id="header" style={{ fontFamily: "serif", fontSize: "20px" }}>
-            {/* {queryL === "leave"
-              ? "Leave Requests"
-              : queryE === "employee"
-              ? "Employee Details"
-              : queryEdit === "true"
-              ? "Edit Employee Details"
-              : queryA === "add"
-              ? "Add Employee"
-              : queryH === "history"
-              ? "Leave History"
-              : queryR === "request"
-              ? "Password Reset Request"
-              : queryApply === "true"
-              ? "Apply For Leave"
-              : queryMy === "view"
-              ? "My Leaves"
-              : queryProfile === "my"
-              ? "My Profile"
-              : queryUEdit === "true"
-              ? "Edit Your Profile"
-              : "Dashboard"} */}
-          </h1>
+          <h1
+            id="header"
+            style={{ fontFamily: "serif", fontSize: "20px" }}
+          ></h1>
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>{greet}</Breadcrumb.Item>
             <Breadcrumb.Item>{username}</Breadcrumb.Item>
           </Breadcrumb>
+          {(pathname ===
+            `/farmer-dashboard/${localStorage.getItem("username")}/create` ||
+            pathname ===
+              `/farmer-dashboard/${localStorage.getItem("username")}`) && (
+            <CreateItem />
+          )}
+          {pathname ===
+            `/farmer-dashboard/${localStorage.getItem("username")}/view` && (
+            <ViewItems />
+          )}
+          {pathname ===
+            `/farmer-dashboard/${localStorage.getItem(
+              "username"
+            )}/edit/${id}` && <EditItem />}
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Copyright © {date.getFullYear()} Agri Product Online Purchasing
