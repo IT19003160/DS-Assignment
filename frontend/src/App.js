@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BuyerDashboard from "./components/Buyer/Dashboard";
 import FarmerDashboard from "./components/Farmer/Dashboard";
 
 // Login Register Reset Imports Goes Here
@@ -52,6 +53,32 @@ const App = () => {
             element={
               <PrivateRoute>
                 <FarmerDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Buyer */}
+          <Route
+            path="/buyer-dashboard/:username"
+            element={
+              <PrivateRoute>
+                <BuyerDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/buyer-dashboard/:username/products"
+            element={
+              <PrivateRoute>
+                <BuyerDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/buyer-dashboard/:username/shop"
+            element={
+              <PrivateRoute>
+                <BuyerDashboard />
               </PrivateRoute>
             }
           />

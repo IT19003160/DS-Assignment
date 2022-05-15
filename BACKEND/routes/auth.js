@@ -11,6 +11,7 @@ const {
   updateById,
   deleteById,
   notifyUser,
+  payment,
 } = require("../controllers/auth");
 
 //bellow routes map the controllers
@@ -33,5 +34,7 @@ router.route("/get/:id").get(getById);
 router.route("/update/:id").put(updateById);
 
 router.route("/delete/:id").delete(deleteById);
+
+router.route("/payment").post(payment);
 
 module.exports = router;

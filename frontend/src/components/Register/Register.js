@@ -134,7 +134,7 @@ const Register = () => {
               </center>
               <div className="text-block">Registration Form</div>
               <Form onFinish={registerHandler}>
-                <label>Username</label>
+                <label className="label">Username</label>
                 <Input
                   label={"USERNAME"}
                   name={"username"}
@@ -144,7 +144,7 @@ const Register = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-                <label>User Type</label>
+                <label className="label">User Type</label>
                 <br />
                 <Form.Item name={"user type"} rules={[{ required: true }]}>
                   <Select
@@ -163,7 +163,7 @@ const Register = () => {
                     <Option value="Buyer">Buyer</Option>
                   </Select>
                 </Form.Item>
-                <label>Email</label>
+                <label className="label">Email</label>
                 <Input
                   label={"USERNAME"}
                   name={"email"}
@@ -174,7 +174,7 @@ const Register = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   type={"email"}
                 />
-                <label>Password</label>
+                <label className="label">Password</label>
                 <Input.Password
                   label={"PASSWORD"}
                   name={"password"}
@@ -188,7 +188,7 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <label>Re-Password</label>
+                <label className="label">Re-Password</label>
                 <Input.Password
                   label={"RE-PASSWORD"}
                   name={"repassword"}
@@ -204,7 +204,7 @@ const Register = () => {
                 />
                 <br /> <br /> <br />
                 {/* <a className="forget-text">Forgot password?</a> */}
-                <Link to="/" className="forget-text" style={{ float: "left" }}>
+                <Link to="/" style={{ float: "left" }}>
                   Already have an account
                 </Link>
                 <div className="btn-wrap">

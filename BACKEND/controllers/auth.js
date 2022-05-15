@@ -251,8 +251,39 @@ exports.notifyUser = async (req, res) => {
     await sendEmail({
       //send email
       to: email,
-      subject:
-        "Login Details For  Agri Product Online Purchasing Platform",
+      subject: "Login Details For  Agri Product Online Purchasing Platform",
+      text: message,
+    });
+
+    res
+      .status(200)
+      .json({ success: true, verify: "Email is sent to the user" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, error: "Email could not be sent" });
+  }
+};
+
+exports.payment = async (req, res) => {
+  const { total, email } = req.body;
+
+  const message = `
+        <center>
+        <h1> Agri Product Online Purchasing Platform</h1><br/><br/></br>
+        <h3>This is auto generated payment slip. Do not Reply</h3><br/>
+        <h3>Charge Details</h3>
+        <h5>
+        <p>You have successfully paid</p>
+        <p>Payment : Rs. ${total}.00</p>
+        <br/><br/></br>
+        <span>Copyright © 2022  Agri Product Online Purchasing Platform<span></center>
+         `;
+  try {
+    await sendEmail({
+      //send email
+      to: email,
+      subject: "Payment Successfull",
       text: message,
     });
 

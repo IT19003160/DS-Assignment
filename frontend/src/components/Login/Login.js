@@ -116,7 +116,7 @@ const Login = () => {
                 Log in to your account if you already have an account
               </div>
               <Form onFinish={loginHandler}>
-                <label>Username</label>
+                <label className="label">Username</label>
                 <Input
                   label={"USERNAME"}
                   name={"username"}
@@ -126,7 +126,7 @@ const Login = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-                <label>Password</label>
+                <label className="label">Password</label>
                 <Input.Password
                   label={"PASSWORD"}
                   name={"password"}
