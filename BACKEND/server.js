@@ -30,5 +30,5 @@ app.listen(PORT, () => {
   console.log(`Server is up and running on port number ${PORT}`);
 });
 
-app.use("/api/auth", require("./BACKEND/routes/auth"));
-app.use("/item", require("./BACKEND/routes/item"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/item", require("./routes/item"));
