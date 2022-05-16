@@ -36,7 +36,7 @@ const Shop = () => {
       description: "Success! Check email for details",
       placement: "top",
     });
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 3000);
   }
 
   return (
